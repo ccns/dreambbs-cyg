@@ -1,6 +1,6 @@
-/usr/bin/env tar -zxvf ./v2.9-ctb.0.002-pre.tar.gz -C $HOME
+curl -L https://github.com/clamtestbbs/wdbbs/archive/v2.9-ctb.0.002-pre.tar.gz | tar -zxv -C $HOME
 cd $HOME/wdbbs-2.9-ctb.0.002-pre && \
-	cp sample/bbs ./$USER && \
+	cp -r sample/bbs ./$USER && \
 	cp -r ./$USER /home/ && \
 	cp sample/wdbbs.conf ./wdbbs.conf && \
 	sed -i 's|\/home\/bbs|'$HOME'|g' wdbbs.conf 

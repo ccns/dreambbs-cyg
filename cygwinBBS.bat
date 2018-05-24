@@ -1,3 +1,8 @@
+@chdir %~dp0
+@chdir
+
+@pause
+
 setup-x86.exe ^
 --quiet-mode ^
 --root C:\cygwin ^
@@ -17,9 +22,28 @@ setup-x86.exe ^
 --packages busybox ^
 --local-install
 
-C:\cygwin\bin\bash.exe --login bmake.sh
+@pause
 
-C:\cygwin\bin\bash.exe --login -i /usr/bin/cygserver-config --yes
-C:\cygwin\bin\bash.exe --login -i cygrunsrv -S cygserver
+copy bmake.sh C:\cygwin\tmp\
+copy buildwd.sh C:\cygwin\tmp\
 
-C:\cygwin\bin\bash.exe -i buildwd.sh
+@pause
+
+:: C:\cygwin\bin\bash.exe --login -i /tmp/bmake.sh
+
+@pause
+
+C:\cygwin\bin\bash.exe --login -i -c '/usr/bin/cygserver-config --yes'
+C:\cygwin\bin\bash.exe --login -i -c '/usr/bin/cygrunsrv -S cygserver'
+
+@pause
+
+C:\cygwin\bin\bash.exe --login -i /tmp/buildwd.sh
+
+@pause
+
+dism /online /Enable-Feature /FeatureName:TelnetClient
+
+@pause
+
+telnet localhost
