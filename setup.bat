@@ -8,6 +8,7 @@ setup-x86.exe ^
 --root C:\cygwin ^
 --download ^
 --local-install ^
+--no-startmenu ^
 --site http://mirrors.kernel.org/sourceware/cygwin ^
 --packages base ^
 --packages base-devel ^
