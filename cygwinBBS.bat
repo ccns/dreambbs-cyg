@@ -1,11 +1,12 @@
 @chdir %~dp0
 @chdir
 
-@pause
+:: @pause
 
 setup-x86.exe ^
 --quiet-mode ^
 --root C:\cygwin ^
+--download ^
 --site http://mirrors.kernel.org/sourceware/cygwin ^
 --packages base ^
 --packages base-devel ^
@@ -19,31 +20,51 @@ setup-x86.exe ^
 --packages wget ^
 --packages curl ^
 --packages screen ^
---packages busybox ^
---local-install
+--packages busybox
 
-@pause
+:: @pause
+
+setup-x86.exe ^
+--quiet-mode ^
+--root C:\cygwin ^
+--local-install ^
+--site http://mirrors.kernel.org/sourceware/cygwin ^
+--packages base ^
+--packages base-devel ^
+--packages gcc-core ^
+--packages make ^
+--packages clang ^
+--packages libcrypt-devel ^
+--packages libncurses-devel ^
+--packages vim ^
+--packages git ^
+--packages wget ^
+--packages curl ^
+--packages screen ^
+--packages busybox
+
+:: @pause
 
 copy bmake.sh C:\cygwin\tmp\
 copy buildwd.sh C:\cygwin\tmp\
 
-@pause
+:: @pause
 
-:: C:\cygwin\bin\bash.exe --login -i /tmp/bmake.sh
+C:\cygwin\bin\bash.exe --login -i /tmp/bmake.sh
 
-@pause
+:: @pause
 
 C:\cygwin\bin\bash.exe --login -i -c '/usr/bin/cygserver-config --yes'
 C:\cygwin\bin\bash.exe --login -i -c '/usr/bin/cygrunsrv -S cygserver'
 
-@pause
+:: @pause
 
 C:\cygwin\bin\bash.exe --login -i /tmp/buildwd.sh
 
-@pause
+:: @pause
 
 dism /online /Enable-Feature /FeatureName:TelnetClient
 
-@pause
+:: @pause
 
 telnet localhost
