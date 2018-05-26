@@ -1,9 +1,11 @@
+:: Change Directory to Where this batch file places
+
 @chdir %~dp0
 @chdir
 
-:: @pause
+:: Installing Cygwin and Related Packages Automatically
 
-setup-x86.exe ^
+@setup-x86.exe ^
 --quiet-mode ^
 --root C:\cygwin ^
 --download ^
@@ -24,28 +26,30 @@ setup-x86.exe ^
 --packages screen ^
 --packages busybox
 
-:: @pause
+:: Copy Shell Script for Running in Cygwin
 
-copy bmake.sh C:\cygwin\tmp\
-copy buildwd.sh C:\cygwin\tmp\
+@copy bmake.sh C:\cygwin\tmp\
+@copy buildwd.sh C:\cygwin\tmp\
 
-:: @pause
+:: Building NetBSD make tool in Cygwin
 
-C:\cygwin\bin\bash.exe --login -i /tmp/bmake.sh
+@C:\cygwin\bin\bash.exe --login -i /tmp/bmake.sh
 
-:: @pause
+:: Enable Cygwin CygServer Feature
 
-C:\cygwin\bin\bash.exe --login -i -c '/usr/bin/cygserver-config --yes'
-C:\cygwin\bin\bash.exe --login -i -c '/usr/bin/cygrunsrv -S cygserver'
+@C:\cygwin\bin\bash.exe --login -i -c '/usr/bin/cygserver-config --yes'
+@C:\cygwin\bin\bash.exe --login -i -c '/usr/bin/cygrunsrv -S cygserver'
 
-:: @pause
+:: Compiling Wind-Dust BBS
 
-C:\cygwin\bin\bash.exe --login -i /tmp/buildwd.sh
+@C:\cygwin\bin\bash.exe --login -i /tmp/buildwd.sh
 
-:: @pause
+:: Enable Default Telnet Client in Windows 10
 
-dism /online /Enable-Feature /FeatureName:TelnetClient
+@dism /online /Enable-Feature /FeatureName:TelnetClient
 
-:: @pause
+:: Test Telnet Server Temporary via telnet.exe
 
-telnet localhost
+@start telnet localhost
+
+@exit
