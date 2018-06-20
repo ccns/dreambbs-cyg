@@ -43,13 +43,3 @@
 :: Compiling Wind-Dust BBS
 
 @C:\cygwin\bin\bash.exe --login -i /tmp/buildwd.sh
-
-:: Enable Default Telnet Client in Windows 10
-
-@dism /online /Enable-Feature /FeatureName:TelnetClient
-
-:: Test Telnet Server Temporary via telnet.exe
-
-@start telnet localhost
-
-@exit
