@@ -40,6 +40,6 @@
 @C:\cygwin\bin\bash.exe --login -i -c '/usr/bin/cygserver-config --yes'
 @C:\cygwin\bin\bash.exe --login -i -c '/usr/bin/cygrunsrv -S cygserver'
 
-:: Compiling Wind-Dust BBS
+:: Compiling DreamBBS
 
-@C:\cygwin\bin\bash.exe --login -i /tmp/buildwd.sh
+@C:\cygwin\bin\bash.exe --login -i /tmp/buildbbs.sh
