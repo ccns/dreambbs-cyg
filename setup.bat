@@ -29,7 +29,7 @@
 :: Copy Shell Script for Running in Cygwin
 
 @copy bmake.sh C:\cygwin\tmp\
-@copy buildwd.sh C:\cygwin\tmp\
+@copy buildbbs.sh C:\cygwin\tmp\
 
 :: Building NetBSD make tool in Cygwin
 
